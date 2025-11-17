@@ -1,6 +1,0 @@
-aws_region          = "us-east-1"
-project_name        = "s3-to-ecr-backup"
-s3_bucket_name      = "my-test-bucket"
-s3_prefix_filter    = ""
-ecr_repository_name = "s3-backup-repo"
-schedule_expression = "rate(1 hour)"
