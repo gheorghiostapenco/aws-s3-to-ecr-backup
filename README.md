@@ -92,7 +92,7 @@ Terraform
 AWS CLI
 AWS CLI configured locally:
 
-```
+```text
 aws configure
 aws sts get-caller-identity
 ```
@@ -104,7 +104,8 @@ All configuration is controlled via Terraform variables.
 variables.tf
 
 Key variables:
-```
+
+``````text
 aws_region – AWS region for all resources
 project_name – prefix for resource names
 s3_bucket_name – source S3 bucket
@@ -116,7 +117,8 @@ schedule_expression – CloudWatch Events schedule expression
 ```
 
 terraform.tfvars example
-```
+
+```text
 aws_region          = "us-east-1"
 project_name        = "s3-to-ecr-backup"
 s3_bucket_name      = "my-test-bucket"
@@ -130,7 +132,7 @@ Do not commit terraform.tfvars to a public repository if it contains any sensiti
 
 From the terraform/ directory:
 
-```
+```text
 terraform init
 terraform validate
 terraform plan
@@ -181,7 +183,7 @@ Deleted X untagged images.
 
 To delete all created resources:
 
-```
+```text
 cd terraform/
 terraform destroy
 ```
