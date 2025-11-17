@@ -1,1 +1,13 @@
 __pycache__/
+# Terraform local directories
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+
+# Local environment variables
+*.tfvars
+*.tfvars.json
+
+# Lambda zip
+lambda/handler.zip
