@@ -1,13 +1,87 @@
-__pycache__/
-# Terraform local directories
-terraform/.terraform/
-terraform/.terraform.lock.hcl
-terraform/terraform.tfstate
-terraform/terraform.tfstate.backup
+###############################
+# Terraform
+###############################
 
-# Local environment variables
+# Local Terraform directories
+**/.terraform/
+**/.terraform/*
+
+# Terraform state files
+terraform.tfstate
+terraform.tfstate.backup
+*.tfstate
+*.tfstate.backup
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Terraform variable files (may contain secrets)
 *.tfvars
 *.tfvars.json
 
-# Lambda zip
+# Terraform provider files and lockfile
+.terraform.lock.hcl
+
+
+###############################
+# AWS Lambda build artifacts
+###############################
+
 lambda/handler.zip
+lambda/*.zip
+
+
+###############################
+# Python
+###############################
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+.eggs/
+dist/
+build/
+
+
+###############################
+# IDE / OS files
+###############################
+
+# VSCode
+.vscode/
+.vscode/*
+
+# JetBrains / PyCharm
+.idea/
+.idea/*
+
+# macOS
+.DS_Store
+
+# Linux file caches
+*~
+*.swp
+*.swo
+
+# Windows metadata
+Thumbs.db
+desktop.ini
+
+
+###############################
+# Git / Credentials Safety
+###############################
+
+# Never commit AWS credentials
+.aws/
+*.pem
+*.key
+*.crt
+
+# Output logs
+*.log
+logs/
