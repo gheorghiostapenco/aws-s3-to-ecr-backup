@@ -78,18 +78,28 @@ aws-s3-to-ecr-backup/
 │   ├── versions.tf         # Terraform & provider configuration
 │   └── terraform.tfvars    # User-provided values (not committed)
 └── README.md
+```
 
 ## Prerequisites
 
 AWS account
+
 IAM user or role with enough permissions to:
+
 Create and manage Lambda functions
+
 Read from S3
+
 Create and manage ECR repositories and images
+
 Manage CloudWatch Events rules
+
 Create IAM roles for Lambda
+
 Terraform
+
 AWS CLI
+
 AWS CLI configured locally:
 
 ```bash
@@ -141,14 +151,22 @@ terraform apply
 
 Terraform will:
 
-Package lambda/handler.py into lambda/handler.zip using archive_file data source
-Create IAM role and inline policy for Lambda
-Create Lambda function with environment variables
-Create CloudWatch Events rule and target
-Grant Events permission to invoke the Lambda
+Package lambda/handler.py into lambda/handler.zip using archive_file data source.
+
+Create IAM role and inline policy for Lambda.
+
+Create Lambda function with environment variables.
+
+Create CloudWatch Events rule and target.
+
+Grant Events permission to invoke the Lambda.
+
 After apply completes, outputs will show:
+
 Lambda function name
+
 CloudWatch rule name
+
 Lambda role ARN
 
 ## Verifying the Deployment
@@ -168,15 +186,21 @@ You should see a rule with the configured schedule_expression.
 
 Go to ECR console
 Repository s3-backup-repo will be created lazily (on the first Lambda run).
+
 After Lambda runs at least once, you should see images with tags derived from SHA-256 hashes.
 
 4. Check logs
 
 Go to CloudWatch Logs → Log groups
+
 Find log group for the Lambda function
+
 Inspect logs for lines like:
+
 Processing S3 object: <key>
+
 Uploaded as image tag: <hash>
+
 Deleted X untagged images.
 
 ## Cleanup
@@ -191,8 +215,11 @@ terraform destroy
 This will remove:
 
 Lambda function
+
 IAM role and inline policy
+
 CloudWatch Events rule and target
+
 Lambda invoke permission
 
 Note: The ECR repository itself is created by the Lambda function at runtime.
@@ -200,10 +227,11 @@ If needed, delete it manually from the ECR console.
 
 ## Limitations
 
-The Lambda function uses a very minimal image manifest and a single layer
-that just stores raw file bytes. It is not meant to be a fully-featured container build system.
+The Lambda function uses a very minimal image manifest and a single layer that just stores raw file bytes. 
+It is not meant to be a fully-featured container build system.
 
 Image content is not runnable as a container; it serves as a storage/backup mechanism.
 
 Only untagged images are cleaned up automatically.
+
 Tagged images are preserved and must be managed manually if needed.
