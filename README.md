@@ -19,6 +19,15 @@ and all infrastructure is provisioned via Terraform.
 
 ---
 
+## Security
+
+This project does not store or ship any AWS credentials.  
+All access to AWS services is performed via IAM roles or IAM users configured outside of this repository.
+
+Please do not open issues containing sensitive information (account IDs, bucket names used in production, etc.).
+
+---
+
 ## Architecture Overview
 
 **Components:**
